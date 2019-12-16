@@ -32,7 +32,7 @@ export default function App() {
         }}
         className="pure-menu pure-menu-horizontal"
       >
-        <NavigationLink href="/about">O projekcie</NavigationLink>
+        <NavigationLink href="/">O projekcie</NavigationLink>
         <NavigationLink
           className="pure-menu-item pure-menu-link"
           href="/get-from-twitter"
@@ -49,7 +49,7 @@ export default function App() {
 
       <Route path="/compare" component={ComparePage} />
       <Route path="/get-from-twitter" component={GetFromTwitterPage} />
-      <Route path="/about" component={AboutProject} />
+      <Route path="/" exact component={AboutProject} />
     </Fragment>
   );
 }
