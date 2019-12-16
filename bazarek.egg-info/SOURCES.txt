@@ -1,0 +1,9 @@
+README.md
+setup.py
+bazarek/__init__.py
+bazarek/main.py
+bazarek.egg-info/PKG-INFO
+bazarek.egg-info/SOURCES.txt
+bazarek.egg-info/dependency_links.txt
+bazarek.egg-info/requires.txt
+bazarek.egg-info/top_level.txt

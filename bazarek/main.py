@@ -4,12 +4,16 @@ finds and compares bazarki with actual poll results
 import re
 from datetime import date
 from twitterscraper import query_tweets
+import functools
 
 
+@functools.lru_cache()
 def find_bazarki():
     """
     scrapes twitter for bazarki-like tweets
     returns list of them (tweet-like objects)
+
+    use memoize=True to... memoize!
     """
     list_of_tweets = query_tweets(
         "#wybory2019 OR #WyboryParlamentarne2019 #bazarek",
@@ -24,7 +28,9 @@ def find_bazarki():
         regex_tester = r"pis.+\s[0-9]+"
         match = re.search(regex_tester, tweet.text, flags=re.I)
         if match:
-            bazarki.append(tweet)
+            bazarki.append(
+                {"text": tweet.text, "url": "https://twitter.com" + tweet.tweet_url}
+            )
 
     print(f"znaleziono {len(bazarki)} bazarków")
     return bazarki
@@ -86,7 +92,7 @@ def compare_bazarki(bazarek_local):
 
 if __name__ == "__main__":
     bazarek = """
-    Markus Informator
+Markus Informator
     @Patriota1989
     UWAGA
     ❕
