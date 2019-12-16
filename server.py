@@ -1,7 +1,12 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from bazarek.main import find_bazarki, compare_bazarki
 
 app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    return render_template("index.html", flask_token="Hello   world")
 
 
 @app.route("/bazarki")
