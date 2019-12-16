@@ -1,12 +1,17 @@
-from flask import Flask, request, jsonify, render_template
+import os
+from flask import Flask, request, jsonify, render_template, send_from_directory
 from bazarek.main import find_bazarki, compare_bazarki
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="client/build")
 
-
-@app.route("/")
-def index():
-    return render_template("index.html", flask_token="Hello   world")
+# Serve React App
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve(path):
+    if path != "" and os.path.exists("client/build/" + path):
+        return send_from_directory("client/build", path)
+    else:
+        return send_from_directory("client/build", "index.html")
 
 
 @app.route("/bazarki")
