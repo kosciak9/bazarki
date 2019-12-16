@@ -55,6 +55,10 @@ export default function AboutProject() {
       </code>
       <p>w dniach 2019-10-11 do 2019-10-14.</p>
 
+      <p css={{ maxWidth: 600 }}>
+        Tweety nie będą się pokazywać na <pre>/get-from-twitter</pre> gdy w Firefox mamy włączone Tracking Protection.
+      </p>
+
       <p>
         zdjęcie w tle:
         <a
